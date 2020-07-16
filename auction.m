@@ -1,20 +1,17 @@
-clear 
-clc
+function [assignments, total_benefit] = auction(benefits, epsilon)
 
-N = 100; % set matrix sizes
-epsilon = 1/(N+1);
-seed = 97;  % set seed to obtain the same random benefits matrix
-
-rng(seed); 
+N = length(benefits);
+benefits_test = benefits;
 
 people = [linspace(1,N,N); zeros(1,N)]; % first row people, second row indicates if they're satisfied or not
 object_prices = zeros(1,N); % prices of the objects
 options = zeros(1,N); % prices - benefits, this will determine the net benfit of an assignment
 assignments = [linspace(1,N,N); linspace(1,N,N)]; % first row people, second row objects
 
+if(nargin < 2)
+    epsilon = 1 / (N+1);
+end
 
-benefits = randi(100,N)  % randomized benefits matrix, rows are people, columns are objects
-benefits_test = benefits;
 
 while sum(people(2,:)) < N
     for i = 1:N
@@ -63,3 +60,4 @@ for i = 1:N
 end
 
 total_benefit
+end
