@@ -50,14 +50,10 @@ while sum(people(2,:)) < N
     end
 end
 
-assignments
-
 total_benefit = 0;
 
 for i = 1:N
     j = assignments(2,i);
     total_benefit = total_benefit + benefits_test(i,j);
 end
-
-total_benefit
 end
